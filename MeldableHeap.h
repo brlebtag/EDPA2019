@@ -1,13 +1,16 @@
-#ifndef __LEFTIST_HEAP_H__
-#define __LEFTIST_HEAP_H__
+#ifndef __MELDABLE_HEAP_H__
+#define __MELDABLE_HEAP_H__
 
 #include "Heap.h"
 #include <iostream>
 #include <functional>
 #include <stdexcept>
 #include <cmath>
+#include <random>
 
 using namespace std;
+
+// https://opendatastructures.org/ods-java/10_2_MeldableHeap_Randomize.html
 
 /**
  * 
@@ -17,11 +20,11 @@ using namespace std;
  *     cmp(a, b) -> b-a //Max-Heap
  */
 template<class T>
-class LeftistHeap : public Heap<T>
+class MeldableHeap : public Heap<T>
 {
 public:
-    LeftistHeap(function<int(T,T)> cmp);
-    ~LeftistHeap();
+    MeldableHeap(function<int(T,T)> cmp);
+    ~MeldableHeap();
     void push(T data);
     T pop();
     T top();
@@ -33,7 +36,6 @@ public:
 private:
 
     struct Node {
-        int sval;
         Node* parent;
         Node* left;
         Node* right;
@@ -44,7 +46,6 @@ private:
             parent = nullptr;
             left = nullptr;
             right = nullptr;
-            sval = 0;
             this->value = value;
         }
 
@@ -77,62 +78,24 @@ private:
         if (y == nullptr)
             return x;
 
-        Node* cur = x;
-        Node* workspace = y;        
-
         if (greaterThan(x, y))
+            return merge(y, x);
+
+        std::default_random_engine generator;
+        std::uniform_int_distribution<int> distribution(0, 1);
+        
+        if (distribution(generator))
         {
-            cur = y;
-            workspace = x;
+            x->left = merge(x->left, y);
+            x->left->parent = x;
         }
-
-        Node* root = cur;
-        Node* prev = cur;
-        Node* temp;
-
-        cur = cur->right;
-
-        while (cur != nullptr)
+        else
         {
-            if (greaterThan(cur, workspace))
-            {
-                temp = workspace;
-                workspace = cur;
-                cur = temp;
-                prev->right = cur;
-                cur->parent = prev;
-            }
-
-            prev = cur;
-            cur = cur->right;
+            x->right = merge(x->right, y);
+            x->right->parent = x;
         }
-
-        prev->right = workspace;
-        workspace->parent = prev;
-
-        while (prev != nullptr)
-        {
-            if (prev->left == nullptr)
-            {
-                prev->left = prev->right;
-                prev->right = nullptr; 
-            }
-            else
-            {
-                if (prev->left->sval < prev->right->sval)
-                {
-                    temp = prev->left;
-                    prev->left = prev->right;
-                    prev->right = temp;
-                }
-
-                prev->sval = prev->right->sval + 1;
-            }            
-
-            prev = prev->parent;
-        }        
-
-        return root;
+        
+        return x;
     }
 
     Node* root;
@@ -141,7 +104,7 @@ private:
 };
 
 template<class T>
-LeftistHeap<T>::LeftistHeap(function<int(T,T)> cmp)
+MeldableHeap<T>::MeldableHeap(function<int(T,T)> cmp)
 {
     this->cmp = cmp;
     count = 0;
@@ -150,21 +113,21 @@ LeftistHeap<T>::LeftistHeap(function<int(T,T)> cmp)
 
 
 template<class T>
-LeftistHeap<T>::~LeftistHeap()
+MeldableHeap<T>::~MeldableHeap()
 {
     if (root != nullptr)
         root->destroy();
 }
 
 template<class T>
-void LeftistHeap<T>::push(T data)
+void MeldableHeap<T>::push(T data)
 {
     root = merge(root, new Node(data));
     count++;
 }
 
 template<class T>
-T LeftistHeap<T>::pop()
+T MeldableHeap<T>::pop()
 {
     if (empty())
     {
@@ -187,30 +150,30 @@ T LeftistHeap<T>::pop()
 }
 
 template<class T>
-T LeftistHeap<T>::top()
+T MeldableHeap<T>::top()
 {
     if (empty())
     {
         throw out_of_range("The heap is empty");
     }
-    
+
     return root->value;
 }
 
 template<class T>
-int LeftistHeap<T>::size()
+int MeldableHeap<T>::size()
 {
     return count;
 }
 
 template<class T>
-bool LeftistHeap<T>::empty()
+bool MeldableHeap<T>::empty()
 {
     return count == 0;
 }
 
 template<class T>
-void LeftistHeap<T>::create(std::initializer_list<T> list)
+void MeldableHeap<T>::create(std::initializer_list<T> list)
 {
     for(T el : list)
     {
@@ -221,7 +184,7 @@ void LeftistHeap<T>::create(std::initializer_list<T> list)
 }
 
 template<class T>
-void LeftistHeap<T>::destroy()
+void MeldableHeap<T>::destroy()
 {
     root->destroy();
     root = nullptr;

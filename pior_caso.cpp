@@ -12,6 +12,8 @@ using namespace std;
 
 using namespace std::chrono;
 
+#define MAX 1000
+
 int main(int argc, char *argv[])
 {
     unsigned long long elapsed = 0;
@@ -26,15 +28,8 @@ int main(int argc, char *argv[])
     //     return b - a;
     // };
 
-    Heap<int>* heap = new LeftistHeap<int>(MinHeap);
+    Heap<int>* heap = new FibonacciHeap<int>(MinHeap);
 
-    string l1, l2;
-
-    ifstream fOperacoes;
-    ifstream fNumbers;
-
-    fOperacoes.open("op100_000.txt");
-    fNumbers.open("n100_000.txt");
 
     int totalOperacoes = 0;
     int totalInserir = 0;
@@ -42,45 +37,38 @@ int main(int argc, char *argv[])
 
     high_resolution_clock::time_point tIni = high_resolution_clock::now();
 
-    while(getline(fOperacoes, l1))
+    for(int i = MAX; i > 0; i--)
     {
+        totalInserir++;
         totalOperacoes++;
 
-        if (l1 == "I")
-        {
-            if (getline(fNumbers, l2))
-            {
-                totalInserir++;
+        high_resolution_clock::time_point t1 = high_resolution_clock::now();
 
-                int num = stoi(l2);
+        heap->push(i);
 
-                high_resolution_clock::time_point t1 = high_resolution_clock::now();
+        high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
-                heap->push(num);
+        auto duration = duration_cast<nanoseconds>( t2 - t1 ).count();
 
-                high_resolution_clock::time_point t2 = high_resolution_clock::now();
+        elapsed += duration;
+        elapsedPush += duration;
+    }
 
-                auto duration = duration_cast<nanoseconds>( t2 - t1 ).count();
+    while(!heap->empty())
+    {
+        totalRemover++;
+        totalOperacoes++;
 
-                elapsed += duration;
-                elapsedPush += duration;
-            }
-        }
-        else
-        {
-            totalRemover++;
+        high_resolution_clock::time_point t1 = high_resolution_clock::now();
 
-            high_resolution_clock::time_point t1 = high_resolution_clock::now();
+        heap->pop();
 
-            heap->pop();
+        high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
-            high_resolution_clock::time_point t2 = high_resolution_clock::now();
+        auto duration = duration_cast<nanoseconds>( t2 - t1 ).count();
 
-            auto duration = duration_cast<nanoseconds>( t2 - t1 ).count();
-
-            elapsed += duration;
-            elapsedPop += duration;
-        }
+        elapsed += duration;
+        elapsedPop += duration;
     }
 
     high_resolution_clock::time_point tFim = high_resolution_clock::now();

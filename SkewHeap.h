@@ -137,7 +137,8 @@ SkewHeap<T>::SkewHeap(function<int(T,T)> cmp)
 template<class T>
 SkewHeap<T>::~SkewHeap()
 {
-    root->destroy();
+    if (root != nullptr)
+        root->destroy();
 }
 
 template<class T>
@@ -173,6 +174,11 @@ T SkewHeap<T>::pop()
 template<class T>
 T SkewHeap<T>::top()
 {
+    if (empty())
+    {
+        throw out_of_range("The heap is empty");
+    }
+
     return root->value;
 }
 
