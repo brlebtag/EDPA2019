@@ -11,7 +11,7 @@ using namespace std;
 
 int random(int min = 0, int max = INT_MAX)
 {
-    return rand() % max + min;
+    return rand() % (max + 1) + min;
 }
 
 void print_op(const char * op, int qtd)
@@ -34,11 +34,11 @@ int main(int argc, char *argv[])
     {
         int size = stoi(argv[1]);
         
-        int MAX_OP = max((int) floor(size * 0.05), size);
+        int MAX_OP = max((int) floor(size * 0.05), 1);
 
         while( size > 0 )
         {
-            rando = (random(0, MAX_OP) % (size + 1));
+            rando = random(0, min(MAX_OP, size));
 
             print_op("I", rando);
 

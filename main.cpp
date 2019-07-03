@@ -93,9 +93,9 @@ int main(int argc, char *argv[])
     cout << "Total push: " << totalInserir << endl;
     cout << "Total pop: " << totalRemover << endl;
     cout << "Duracao total das operacoes de insercao: " << elapsedPush  << "ns" << endl;
-    cout << "Duracao média das operacoes de insercao: " << elapsedPush / totalOperacoes << "ns" << endl;
+    cout << "Duracao média das operacoes de insercao: " << elapsedPush / totalInserir << "ns" << endl;
     cout << "Duracao total das operacoes de remocao: " << elapsedPop  << "ns" << endl;
-    cout << "Duracao média das operacoes de remocao: " << elapsedPop / totalOperacoes << "ns" << endl;
+    cout << "Duracao média das operacoes de remocao: " << elapsedPop / totalRemover << "ns" << endl;
     cout << "Duracao total das operacoes: " << elapsed  << "ns" << endl;
     cout << "Duracao média das operacoes: " << elapsed / totalOperacoes << "ns" << endl;
 

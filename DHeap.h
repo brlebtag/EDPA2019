@@ -17,17 +17,18 @@ using namespace std;
  * So: cmp(a, b) -> a-b //Min-Heap
  *     cmp(a, b) -> b-a //Max-Heap
  */
-template<unsigned int D, class T>
+template<class T>
 class DHeap : public Heap<T>
 {
 public:
-    DHeap(function<int(T,T)> cmp);
+    DHeap(int d, function<int(T,T)> cmp);
     void push(T data);
     T pop();
     T top();
     int size();
     bool empty();
     void create(std::initializer_list<T> list);
+    void create(const std::vector<T>& list);
     void destroy();
 
     // void debug()
@@ -43,6 +44,7 @@ public:
 private:
     vector<T> nodes;
     function<int(T,T)> cmp;
+    int D;
 
     int parent(int node)
     {
@@ -128,21 +130,22 @@ private:
     }
 };
 
-template<unsigned int D, class T>
-DHeap<D, T>::DHeap(function<int(T,T)> cmp)
+template<class T>
+DHeap<T>::DHeap(int d, function<int(T,T)> cmp)
 {
     this->cmp = cmp;
+    this->D = d;
 }
 
-template<unsigned int D, class T>
-void DHeap<D, T>::push(T data)
+template<class T>
+void DHeap<T>::push(T data)
 {
     nodes.push_back(data);
     bubbleUp(nodes.size() - 1);    
 }
 
-template<unsigned int D, class T>
-T DHeap<D, T>::pop()
+template<class T>
+T DHeap<T>::pop()
 {
     if (empty())
     {
@@ -160,8 +163,8 @@ T DHeap<D, T>::pop()
     return result;
 }
 
-template<unsigned int D, class T>
-T DHeap<D, T>::top()
+template<class T>
+T DHeap<T>::top()
 {
     if (empty())
     {
@@ -171,25 +174,22 @@ T DHeap<D, T>::top()
     return nodes[0];
 }
 
-template<unsigned int D, class T>
-int DHeap<D, T>::size()
+template<class T>
+int DHeap<T>::size()
 {
     return nodes.size();
 }
 
-template<unsigned int D, class T>
-bool DHeap<D, T>::empty()
+template<class T>
+bool DHeap<T>::empty()
 {
     return nodes.size() == 0;
 }
 
-template<unsigned int D, class T>
-void DHeap<D, T>::create(std::initializer_list<T> list)
+template<class T>
+void DHeap<T>::create(std::initializer_list<T> list)
 {
-    for(auto const& el : list)
-    {
-        nodes.push_back(el);
-    }
+    nodes = list;
 
     int end = floor((size() - 1) / 2);
 
@@ -203,8 +203,25 @@ void DHeap<D, T>::create(std::initializer_list<T> list)
     // debug();
 }
 
-template<unsigned int D, class T>
-void DHeap<D, T>::destroy()
+template<class T>
+void DHeap<T>::create(const std::vector<T>& list)
+{
+    nodes = list;
+
+    int end = floor((size() - 1) / 2);
+
+    for (int i = end; i >= 0; i--)
+    {
+        // cout<< "i: " << i << ", end: " << end << endl;
+        // debug();
+        bubbleDown(i);
+    }
+    
+    // debug();
+}
+
+template<class T>
+void DHeap<T>::destroy()
 {
     nodes.clear();
 }

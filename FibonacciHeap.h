@@ -31,6 +31,7 @@ public:
     int size();
     bool empty();
     void create(std::initializer_list<T> list);
+    void create(const std::vector<T>& list);
     void destroy();
 
 private:
@@ -361,6 +362,15 @@ bool FibonacciHeap<T>::empty()
 
 template<class T>
 void FibonacciHeap<T>::create(std::initializer_list<T> list)
+{
+    for(T el : list)
+    {
+        push(el);
+    }
+}
+
+template<class T>
+void FibonacciHeap<T>::create(const std::vector<T>& list)
 {
     for(T el : list)
     {

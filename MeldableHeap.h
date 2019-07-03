@@ -31,6 +31,7 @@ public:
     int size();
     bool empty();
     void create(std::initializer_list<T> list);
+    void create(const std::vector<T>& list);
     void destroy();
 
 private:
@@ -174,6 +175,17 @@ bool MeldableHeap<T>::empty()
 
 template<class T>
 void MeldableHeap<T>::create(std::initializer_list<T> list)
+{
+    for(T el : list)
+    {
+        root = merge(root, new Node(el));
+    }
+
+    count = list.size();
+}
+
+template<class T>
+void MeldableHeap<T>::create(const std::vector<T>& list)
 {
     for(T el : list)
     {

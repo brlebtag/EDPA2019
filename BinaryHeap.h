@@ -28,6 +28,7 @@ public:
     int size();
     bool empty();
     void create(std::initializer_list<T> list);
+    void create(const std::vector<T>& list);
     void destroy();
 
     // void debug()
@@ -191,10 +192,24 @@ bool BinaryHeap<T>::empty()
 template<class T>
 void BinaryHeap<T>::create(std::initializer_list<T> list)
 {
-    for(auto const& el : list)
+    nodes = list;
+
+    int end = floor((size() - 1) / 2);
+
+    for (int i = end; i >= 0; i--)
     {
-        nodes.push_back(el);
+        // cout<< "i: " << i << ", end: " << end << endl;
+        // debug();
+        bubbleDown(i);
     }
+    
+    // debug();
+}
+
+template<class T>
+void BinaryHeap<T>::create(const std::vector<T>& list)
+{
+    nodes = list;
 
     int end = floor((size() - 1) / 2);
 
