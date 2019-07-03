@@ -257,7 +257,7 @@ int main(int argc, char *argv[])
     TestarRandom("n100_000.txt", criarBinaryHeap);
     TestarRandom("n1_000_000.txt", criarBinaryHeap);
     TestarRandom("n2_000_000.txt", criarBinaryHeap);
-    TestarRandom("n2_000_000.txt", criarBinaryHeap);
+    TestarRandom("n5_000_000.txt", criarBinaryHeap);
 
     cout << "                 RANDOM OPERACOES                 " << endl;
     cout << "N, T1, T2, T3, T4, T5, Media, Desvio" << endl;
@@ -285,7 +285,7 @@ int main(int argc, char *argv[])
     TestarRandom("n100_000.txt", criar3Heap);
     TestarRandom("n1_000_000.txt", criar3Heap);
     TestarRandom("n2_000_000.txt", criar3Heap);
-    TestarRandom("n2_000_000.txt", criar3Heap);
+    TestarRandom("n5_000_000.txt", criar3Heap);
 
     cout << "                 RANDOM OPERACOES                 " << endl;
     cout << "N, T1, T2, T3, T4, T5, Media, Desvio" << endl;
@@ -313,7 +313,7 @@ int main(int argc, char *argv[])
     TestarRandom("n100_000.txt", criar4Heap);
     TestarRandom("n1_000_000.txt", criar4Heap);
     TestarRandom("n2_000_000.txt", criar4Heap);
-    TestarRandom("n2_000_000.txt", criar4Heap);
+    TestarRandom("n5_000_000.txt", criar4Heap);
 
     cout << "                 RANDOM OPERACOES                 " << endl;
     cout << "N, T1, T2, T3, T4, T5, Media, Desvio" << endl;
@@ -341,7 +341,7 @@ int main(int argc, char *argv[])
     TestarRandom("n100_000.txt", criar5Heap);
     TestarRandom("n1_000_000.txt", criar5Heap);
     TestarRandom("n2_000_000.txt", criar5Heap);
-    TestarRandom("n2_000_000.txt", criar5Heap);
+    TestarRandom("n5_000_000.txt", criar5Heap);
 
     cout << "                 RANDOM OPERACOES                 " << endl;
     cout << "N, T1, T2, T3, T4, T5, Media, Desvio" << endl;
@@ -369,7 +369,7 @@ int main(int argc, char *argv[])
     TestarRandom("n100_000.txt", criarLeftistHeap);
     TestarRandom("n1_000_000.txt", criarLeftistHeap);
     TestarRandom("n2_000_000.txt", criarLeftistHeap);
-    TestarRandom("n2_000_000.txt", criarLeftistHeap);
+    TestarRandom("n5_000_000.txt", criarLeftistHeap);
 
     cout << "                 RANDOM OPERACOES                 " << endl;
     cout << "N, T1, T2, T3, T4, T5, Media, Desvio" << endl;
@@ -397,7 +397,7 @@ int main(int argc, char *argv[])
     TestarRandom("n100_000.txt", criarFibonacciHeap);
     TestarRandom("n1_000_000.txt", criarFibonacciHeap);
     TestarRandom("n2_000_000.txt", criarFibonacciHeap);
-    TestarRandom("n2_000_000.txt", criarFibonacciHeap);
+    TestarRandom("n5_000_000.txt", criarFibonacciHeap);
 
     cout << "                 RANDOM OPERACOES                 " << endl;
     cout << "N, T1, T2, T3, T4, T5, Media, Desvio" << endl;
@@ -425,7 +425,7 @@ int main(int argc, char *argv[])
     TestarRandom("n100_000.txt", criarSkewHeap);
     TestarRandom("n1_000_000.txt", criarSkewHeap);
     TestarRandom("n2_000_000.txt", criarSkewHeap);
-    TestarRandom("n2_000_000.txt", criarSkewHeap);
+    TestarRandom("n5_000_000.txt", criarSkewHeap);
 
     cout << "                 RANDOM OPERACOES                 " << endl;
     cout << "N, T1, T2, T3, T4, T5, Media, Desvio" << endl;
@@ -453,7 +453,7 @@ int main(int argc, char *argv[])
     TestarRandom("n100_000.txt", criarMeldableHeap);
     TestarRandom("n1_000_000.txt", criarMeldableHeap);
     TestarRandom("n2_000_000.txt", criarMeldableHeap);
-    TestarRandom("n2_000_000.txt", criarMeldableHeap);
+    TestarRandom("n5_000_000.txt", criarMeldableHeap);
 
     cout << "                 RANDOM OPERACOES                 " << endl;
     cout << "N, T1, T2, T3, T4, T5, Media, Desvio" << endl;
