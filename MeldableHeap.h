@@ -7,8 +7,10 @@
 #include <stdexcept>
 #include <cmath>
 #include <random>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 // https://opendatastructures.org/ods-java/10_2_MeldableHeap_Randomize.html
 
@@ -82,10 +84,10 @@ private:
         if (greaterThan(x, y))
             return merge(y, x);
 
-        std::default_random_engine generator;
+        std::default_random_engine generator(system_clock::now().time_since_epoch().count());
         std::uniform_int_distribution<int> distribution(0, 1);
         
-        if (distribution(generator))
+        if (distribution(generator) == 0)
         {
             x->left = merge(x->left, y);
             x->left->parent = x;
