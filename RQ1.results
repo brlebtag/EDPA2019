@@ -1,0 +1,37 @@
+---------------- INSERT : PIOR CASO ----------------
+N, T1, T2, T3, T4, T5, Media, Desvio, Comparacoes, Memoria
+1000, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0, 8987, 4kB
+10000, 6ms, 6ms, 5ms, 6ms, 6ms, 5ms, 0, 123631, 64kB
+100000, 73ms, 71ms, 71ms, 71ms, 71ms, 71ms, 0, 1568946, 512kB
+1000000, 858ms, 857ms, 851ms, 850ms, 850ms, 853ms, 3.4641, 18951445, 4MB
+2000000, 1783ms, 1776ms, 1773ms, 1771ms, 1776ms, 1775ms, 4.12311, 39902870, 8MB
+5000000, 4729ms, 4753ms, 4947ms, 4753ms, 4730ms, 4782ms, 82.9699, 106611416, 32MB
+10000000, 9893ms, 9873ms, 9865ms, 9896ms, 9881ms, 9881ms, 11.7047, 223222809, 64MB
+---------------- CONSTROI : PIOR CASO ----------------
+N, T1, T2, T3, T4, T5, Media, Desvio, Comparacoes, Memoria
+1000, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0, 1982, 3kB
+10000, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0, 19982, 39kB
+100000, 10ms, 9ms, 9ms, 8ms, 9ms, 9ms, 0, 199978, 390kB
+1000000, 90ms, 87ms, 87ms, 88ms, 88ms, 88ms, 1, 1999974, 3MB
+2000000, 178ms, 178ms, 177ms, 177ms, 178ms, 177ms, 0, 3999972, 7MB
+5000000, 446ms, 448ms, 447ms, 449ms, 448ms, 447ms, 1, 9999972, 19MB
+10000000, 898ms, 896ms, 898ms, 895ms, 907ms, 898ms, 4.24264, 19999970, 38MB
+---------------- INSERT : ALEATORIO ----------------
+N, T1, T2, T3, T4, T5, Media, Desvio, Comparacoes, Memoria
+1000, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0, 2229, 4kB
+10000, 2ms, 2ms, 2ms, 2ms, 2ms, 2ms, 0, 22473, 64kB
+100000, 27ms, 24ms, 24ms, 24ms, 24ms, 24ms, 1, 228291, 512kB
+1000000, 251ms, 246ms, 246ms, 246ms, 247ms, 247ms, 1.73205, 2278828, 4MB
+2000000, 500ms, 497ms, 496ms, 498ms, 497ms, 497ms, 1.41421, 4563001, 8MB
+5000000, 1261ms, 1242ms, 1241ms, 1241ms, 1246ms, 1246ms, 7.61577, 11404704, 32MB
+10000000, 2686ms, 2830ms, 2526ms, 2514ms, 2503ms, 2611ms, 127.969, 22810409, 64MB
+---------------- CONSTROI : ALEATORIO ----------------
+N, T1, T2, T3, T4, T5, Media, Desvio, Comparacoes, Memoria
+1000, 0ms, 0ms, 0ms, 0ms, 0ms, 0ms, 0, 1868, 3kB
+10000, 0ms, 1ms, 0ms, 0ms, 0ms, 0ms, 0, 18768, 39kB
+100000, 10ms, 9ms, 8ms, 8ms, 8ms, 8ms, 1, 188050, 390kB
+1000000, 85ms, 85ms, 86ms, 85ms, 86ms, 85ms, 0, 1880895, 3MB
+2000000, 177ms, 177ms, 176ms, 177ms, 177ms, 176ms, 0, 3762818, 7MB
+5000000, 445ms, 447ms, 446ms, 446ms, 444ms, 445ms, 1, 9407009, 19MB
+10000000, 893ms, 891ms, 889ms, 891ms, 890ms, 890ms, 1.41421, 18812269, 38MB
+Duracao total do experimento: 138s

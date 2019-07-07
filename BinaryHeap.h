@@ -30,6 +30,10 @@ public:
     void create(std::initializer_list<T> list);
     void create(const std::vector<T>& list);
     void destroy();
+    unsigned long int memoryUsage()
+    {
+        return sizeof(BinaryHeap) + nodes.capacity() * sizeof(T);
+    }
 
     // void debug()
     // {

@@ -35,6 +35,10 @@ public:
     void create(std::initializer_list<T> list);
     void create(const std::vector<T>& list);
     void destroy();
+    unsigned long int memoryUsage()
+    {
+        return sizeof(MeldableHeap) + count * sizeof(Node);
+    }
 
 private:
 

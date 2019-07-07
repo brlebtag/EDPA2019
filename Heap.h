@@ -16,6 +16,7 @@ public:
     virtual void create(std::initializer_list<T> list) = 0;
     virtual void create(const std::vector<T>& list) = 0;
     virtual void destroy() = 0;
+    virtual unsigned long int memoryUsage() = 0;
 };
 
 #endif
