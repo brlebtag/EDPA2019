@@ -162,8 +162,8 @@ void TestarConstroiPiorCase(int d, int quantidade)
 
 int main(int argc, char *argv[])
 {
-    int values[] = {/* 1000, 10000, 100000, 1000000, 2000000, */ 5000000};
-    int ds[] = {2, 10, 20, 50, 70, 100, 120, 150, 170, 200};
+    int values[] = {/*1000, 10000, 100000, 1000000, 2000000, */ 5000000};
+    int ds[] = {2, 10, 20, 50, 70, 100, 120, 150, 170, 200, 220, 250, 270, 300};
 
     high_resolution_clock::time_point tIni = high_resolution_clock::now();
 

@@ -50,32 +50,32 @@ private:
     function<int(T,T)> cmp;
     int D;
 
-    int parent(int node)
+    unsigned long int parent(unsigned long int node)
     {
         return ceil(node/((double) D)) - 1;
     }
 
-    int first(int node)
+    unsigned long int first(unsigned long int node)
     {
         return D * node + 1;
     }
 
-    int last(int node)
+    unsigned long int last(unsigned long int node)
     {
         return D * node + D;
     }
     
-    void swap(int i, int j)
+    void swap(unsigned long int i, unsigned long int j)
     {
         T el = nodes[j];
         nodes[j] = nodes[i];
         nodes[i] = el;
     }
 
-    void bubbleUp(int i)
+    void bubbleUp(unsigned long int i)
     {
         T value = nodes[i];
-        int father = parent(i);
+        unsigned long int father = parent(i);
 
         // i != 0
         while (i >= 0 && lowerThan(value, father))
@@ -88,12 +88,12 @@ private:
         nodes[i] = value;
     }
     
-    inline bool lowerThan(T value, int i)
+    inline bool lowerThan(T value, unsigned long int i)
     {
         return cmp(value, nodes[i]) < 0;
     }
 
-    inline bool greaterThan(T value, int i)
+    inline bool greaterThan(T value, unsigned long int i)
     {
         return cmp(value, nodes[i]) >= 0;
     }
@@ -101,16 +101,24 @@ private:
     void bubbleDown(int i)
     {
         T value = nodes[i];
-        int end = nodes.size() - 1;
-        int lower = i;
+        unsigned long int end = nodes.size() - 1;
+        unsigned long int lower = i;
         T lowerValue = value;
 
         while(i < end) 
         {
-            int sFirst = first(i);
-            int sLast = last(i);
+            unsigned long int sFirst = first(i);
+            unsigned long int sLast = last(i);
 
-            for (int i = sFirst; i <= sLast; i++)
+            if (i < 0 || sFirst < 0 || sLast < 0)
+            {
+                int sFirst = first(i);
+                int sLast = last(i);
+                throw out_of_range("error");
+                
+            }
+
+            for (unsigned long int i = sFirst; i <= sLast; i++)
             {
                 if (i <= end && greaterThan(lowerValue, i))
                 {
@@ -212,7 +220,7 @@ void DHeap<T>::create(const std::vector<T>& list)
 {
     nodes = list;
 
-    int end = floor((size() - 1) / 2);
+    int end = (list.size() - 1) / (double) D;
 
     for (int i = end; i >= 0; i--)
     {
