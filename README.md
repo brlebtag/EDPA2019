@@ -27,6 +27,12 @@ g++ RQ2.cpp -o RQ2
 
 ## Executando as questões de pesquisa
 
+É preciso executar o unzip dos arquivos usados na simulação (data.tar.xz).
+
+```
+tar -xvf data.tar.xz
+```
+
 Para executar as questões de pesquisa no ubuntu basta executar:
 
 RQ1:
