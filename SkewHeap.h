@@ -112,6 +112,13 @@ private:
             cur->right = cur->left;
             cur->left = temp;
 
+            if (cur->right == nullptr)
+            {
+                cur->right = workspace;
+                workspace->parent = cur;
+                break;
+            }
+
             if (cur->left == nullptr)
             {
                 cur->left = workspace;
